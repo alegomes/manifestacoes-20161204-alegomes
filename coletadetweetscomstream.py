@@ -86,15 +86,10 @@ class MyStreamListener(tweepy.StreamListener):
 		tweets_file.write(data)
 		log_file.flush()
 
-# consumer_key="suachave"
-# consumer_secret="suachave"
-# access_token="suachave"
-# access_token_secret="suachave"
-
-consumer_key="T00TCHCTXTmCdh6vVsqU84D9i"
-consumer_secret="ZJHKVWaCQAatlzJATluk0K6EdHCNkLyniPztYRug9zCCgvOGVL"
-access_token="14147108-5msuw61fHHCmzkIDPJBbVtwkv3TPd3jQiaRbp5QeW"
-access_token_secret="MZ72wvleYUCQeWDnudF2fEhanjGREP51msTYAF9vpbNKa"
+consumer_key="suachave"
+consumer_secret="suachave"
+access_token="suachave"
+access_token_secret="suachave"
 
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
