@@ -17,10 +17,7 @@ class MyStreamListener(tweepy.StreamListener):
 		log_file.write('%s [ERROR] %s\n' % (now,status_code))
 		log_file.flush()
 
-		if status_code == 401:
-			msg = "Bla"
-		else:
-			msg = "%d" % status_code
+		#ToDo Error handling
 
 
 	def on_status(self, status):
@@ -36,8 +33,9 @@ class MyStreamListener(tweepy.StreamListener):
 		# HTTPSConnectionPool(host='stream.twitter.com', port=443): Read timed out.
 		# ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
 
+		# ToDo Exception handling
 		# if exception == requests.exceptions.ConnectionError:
-			# pensar no que fazer
+		#	then what?
 
 	def on_delete(self, status_id, user_id):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -90,6 +88,8 @@ consumer_key="suachave"
 consumer_secret="suachave"
 access_token="suachave"
 access_token_secret="suachave"
+
+
 
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
