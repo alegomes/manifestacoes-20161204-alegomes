@@ -9,56 +9,58 @@ class MyStreamListener(tweepy.StreamListener):
 
 	def on_connect(self):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write("%s [CONNECTED]" % now)
+		log_file.write("%s [CONNECTED]\n" % now)
 
 	def on_error(self, status_code):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [ERROR] %s' % (now,status_code))
+		log_file.write('%s [ERROR] %s\n' % (now,status_code))
+
 
 	def on_status(self, status):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [STATUS] %s' % (now,status))
+		log_file.write('%s [STATUS] %s\n' % (now,status))
 
 	def on_exception(self, exception):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [EXCEPTION] %s' % (now,exception))
+		log_file.write('%s [EXCEPTION] %s\n' % (now,exception))
+
 
 	def on_delete(self, status_id, user_id):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [DELETED] StatusId=%s UserId=%s' % (now,status_id,user_id))
+		log_file.write('%s [DELETED] StatusId=%s UserId=%s\n' % (now,status_id,user_id))
 
 	def on_event(self, status):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [EVENT] %s' % (now,status))
+		log_file.write('%s [EVENT] %s\n' % (now,status))
 
 	def on_direct_message(self, status):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [DIRECT_MESSAGE] %s' % (now,status))
+		log_file.write('%s [DIRECT_MESSAGE] %s\n' % (now,status))
 
 	def on_friends(self, friends):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [FRENDS] %s' % (now,friends))
+		log_file.write('%s [FRENDS] %s\n' % (now,friends))
 
 	def on_limit(self, track):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [LIMIT] %s' % (now,track))
+		log_file.write('%s [LIMIT] %s\n' % (now,track))
 
 	def on_timeout(self):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [TIMEOUT]' % now)
+		log_file.write('%s [TIMEOUT]\n' % now)
 
     #  https://dev.twitter.com/docs/streaming-apis/messages#Disconnect_messages_disconnect
 	def on_disconnect(self,notice):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [DISCONNECT] %s' % (now,notice))
+		log_file.write('%s [DISCONNECT] %s\n' % (now,notice))
 
 	def on_warning(self,notice):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [WARNING] %s' % (now,notice))
+		log_file.write('%s [WARNING] %s\n' % (now,notice))
 
 	def on_data(self, data):
 		now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		log_file.write('%s [DATA]' % (now))
+		log_file.write('%s [DATA]\n' % (now))
 		tweets_file.write(data)
 
 consumer_key="suachave"
@@ -81,5 +83,7 @@ criterio = ["#VemPraRuaBrasil","#MarchaDosPatinhosPamonhas","Esplanada","#antago
 stream = tweepy.Stream(auth=api.auth, listener=MyStreamListener())
 
 # Declarando os tweets do meu interesse
-log_file.write("Iniciando coleta de %s\n" % criterio)
+msg = "%s Iniciando coleta de %s\n" % (now,criterio)
+log_file.write(msg,"\n")
+print(msg)
 stream.filter(track=criterio)
